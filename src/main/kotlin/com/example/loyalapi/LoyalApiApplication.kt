@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class LoyalApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<LoyalApiApplication>(*args)
+    runApplication<LoyalApiApplication>(*args)
 }

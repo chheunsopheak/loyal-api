@@ -8,7 +8,6 @@ import com.example.loyalapi.entities.users.User
 import com.example.loyalapi.interfaces.users.IUserService
 import com.example.loyalapi.wrapper.ApiResponse
 import com.example.loyalapi.wrapper.PaginatedResponse
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -25,10 +24,9 @@ class UserController(private val userService: IUserService) {
         return userService.getUserById(userId);
     }
 
-    //get all users
     @GetMapping("users")
     fun getAllUsers(
         @RequestParam(defaultValue = "1") pageNumber: Int, @RequestParam(defaultValue = "10") pageSize: Int
-    ): ApiResponse<PaginatedResponse<UserResponse>> {
+    ): PaginatedResponse<UserResponse> {
         return userService.getAllUsers(pageNumber, pageSize); }
 }

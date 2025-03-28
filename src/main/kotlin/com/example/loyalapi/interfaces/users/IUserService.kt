@@ -11,5 +11,5 @@ import org.hibernate.engine.jdbc.Size
 interface IUserService {
     fun register(request: UserRegisterRequest): ApiResponse<User>
     fun getUserById(userId: Long): ApiResponse<UserDetailResponse>
-    fun getAllUsers(pageNumber: Int, pageSize: Int): ApiResponse<PaginatedResponse<UserResponse>>
+    fun getAllUsers(pageNumber: Int, pageSize: Int): PaginatedResponse<UserResponse>
 }

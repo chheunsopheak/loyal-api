@@ -11,7 +11,7 @@ data class User(
     @Id
     @GeneratedValue(generator = "user_sequence", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
-    val userId: Long = 0,
+    val id: Long = 0,
 
     @Column(nullable = false)
     val username: String,

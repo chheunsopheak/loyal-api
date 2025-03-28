@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 data class UserDetailResponse(
     val id: Long,
     val email: String,
-    val username: String,
+    val userName: String,
     val role: String,
     val firstName: String,
     val lastName: String,

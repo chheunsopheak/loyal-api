@@ -46,9 +46,9 @@ class UserService(
         val user = userRepository.findById(userId).orElse(null) ?: return ApiResponse.notFound("User not found")
 
         val userDetail = UserDetailResponse(
-            id = user.userId,
+            id = user.id,
             email = user.email,
-            username = user.username,
+            userName = user.username,
             role = user.role,
             firstName = user.firstName,
             lastName = user.lastName,
@@ -60,15 +60,17 @@ class UserService(
         return ApiResponse.success(userDetail, "User retrieved successfully")
     }
 
-    override fun getAllUsers(pageNumber: Int, pageSize: Int): ApiResponse<PaginatedResponse<UserResponse>> {
+    override fun getAllUsers(pageNumber: Int, pageSize: Int): PaginatedResponse<UserResponse> {
         val pageable = PageRequest.of(pageNumber - 1, pageSize)
+
         val userPage = userRepository.findAll(pageable)
+
 
         val userResponses = userPage.content.map { user ->
             UserResponse(
-                id = user.userId,
+                id = user.id,
                 email = user.email,
-                username = user.username,
+                userName = user.username,
                 firstName = user.firstName,
                 lastName = user.lastName,
                 createdAt = user.createdAt
@@ -81,6 +83,6 @@ class UserService(
             pageSize = pageSize,
             totalItems = userPage.totalElements.toInt()
         )
-        return ApiResponse.success(paginatedResponse, "Users retrieved successfully")
+        return paginatedResponse;
     }
 }
